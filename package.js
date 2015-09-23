@@ -18,10 +18,12 @@ Package.onUse(function(api) {
   api.add_files([
     'source/email-address.js',
     'source/username.js',
+    'source/password.js',
   ]);
 
   api.export('EmailAddress');
   api.export('Username');
+  api.export('Password');
 
 });
 
@@ -38,6 +40,7 @@ Package.onTest(function(api) {
   api.add_files([
     'tests/email-address.unit.js',
     'tests/username.unit.js',
+    'tests/password.unit.js',
   ]);
 
 });
