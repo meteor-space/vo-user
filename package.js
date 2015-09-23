@@ -11,14 +11,17 @@ Package.onUse(function(api) {
 
   api.use([
     'check',
-    'space:messaging@1.6.0'
+    'underscore',
+    'space:messaging@1.7.1'
   ]);
 
   api.add_files([
     'source/email-address.js',
+    'source/username.js',
   ]);
 
   api.export('EmailAddress');
+  api.export('Username');
 
 });
 
@@ -26,6 +29,7 @@ Package.onTest(function(api) {
 
   api.use([
     'check',
+    'ejson',
     'space:vo-user',
     'practicalmeteor:munit@2.1.5',
     'space:testing@1.3.0',
@@ -33,6 +37,7 @@ Package.onTest(function(api) {
 
   api.add_files([
     'tests/email-address.unit.js',
+    'tests/username.unit.js',
   ]);
 
 });
