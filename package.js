@@ -2,7 +2,7 @@
 Package.describe({
   summary: 'Value Objects for user domains.',
   name: 'space:vo-user',
-  version: '0.1.0',
+  version: '0.2.0',
 });
 
 Package.onUse(function(api) {
