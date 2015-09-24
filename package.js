@@ -1,7 +1,7 @@
 
 Package.describe({
-  summary: 'Value Objects for user domains.',
   name: 'space:vo-user',
+  summary: 'Value Objects for user domains.',
   version: '0.2.0',
   git: 'https://github.com/meteor-space/vo-user.git',
   documentation: 'README.md'
