@@ -14,7 +14,7 @@ Package.onUse(function(api) {
   api.use([
     'check',
     'underscore',
-    'space:messaging@1.7.1'
+    'space:messaging@2.1.0'
   ]);
 
   api.add_files([
@@ -36,7 +36,7 @@ Package.onTest(function(api) {
     'ejson',
     'space:vo-user',
     'practicalmeteor:munit@2.1.5',
-    'space:testing@1.3.0',
+    'space:testing@1.5.0',
   ]);
 
   api.add_files([
