@@ -1,6 +1,9 @@
 Changelog
 =========
 
+### 0.2.1
+Version bump space:messaging and space:testing dependencies
+
 ### 0.2.0
 Added simple `Username` and `Password` value objects that disallow empty
 string values.
