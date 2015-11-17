@@ -1,23 +1,26 @@
 describe('Password', function() {
 
   beforeEach(function() {
-    this.password = new Password('Dominik');
+    this.password = new Password('my-password');
   });
 
   it('is serializable', function() {
-    var copy = EJSON.parse(EJSON.stringify(this.password));
+    let copy = EJSON.parse(EJSON.stringify(this.password));
     expect(copy.equals(this.password)).to.be.true;
   });
 
   describe('construction', function() {
 
     it('assigns valid passwords', function() {
-      var username = 'TestUser';
-      expect(new Password(username).value).to.equal(username);
+      let password = 'test';
+      expect(new Password(password).value).to.equal(password);
     });
 
     it('throws error if empty password is assigned', function() {
-      expect(function() { new Password(''); }).to.throw(Password.ERRORS.cantBeEmpty);
+      let createEmptyPassword = function() {
+        return new Password('');
+      };
+      expect(createEmptyPassword).to.throw(Password.ERRORS.cantBeEmpty);
     });
 
   });
@@ -25,22 +28,22 @@ describe('Password', function() {
   describe('equality', function() {
 
     it('is equal when username is same', function() {
-      var first = new Password('Dominik');
-      var second = new Password('Dominik');
+      let first = new Password('Bla');
+      let second = new Password('Bla');
       expect(first.equals(second)).to.be.true;
       expect(second.equals(first)).to.be.true;
     });
 
     it('is not equal if address is different', function() {
-      var first = new Password('Dominik');
-      var second = new Password('Rhys');
+      let first = new Password('first');
+      let second = new Password('second');
       expect(first.equals(second)).to.be.false;
       expect(second.equals(first)).to.be.false;
     });
 
     it('is not equal if other is not an email address', function() {
-      var first = new Password('Dominik');
-      var second = 'Dominik';
+      let first = new Password('first');
+      let second = 'second';
       expect(first.equals(second)).to.be.false;
     });
 
