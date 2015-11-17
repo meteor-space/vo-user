@@ -5,27 +5,27 @@ describe('EmailAddress', function() {
   });
 
   it('is serializable', function() {
-    var copy = EJSON.parse(EJSON.stringify(this.emailAdress));
+    let copy = EJSON.parse(EJSON.stringify(this.emailAdress));
     expect(copy.equals(this.emailAdress)).to.be.true;
   });
 
   describe('construction', function() {
 
     it('assigns valid email addresses', function() {
-      var email;
+      let email;
       email = 'dominik.guzei@gmail.com';
-       expect(new EmailAddress(email).address).to.equal(email);
+      expect(new EmailAddress(email).address).to.equal(email);
     });
 
     it('throws error if invalid email address is assigned', function() {
-      expect(function() { new EmailAddress('XX'); })
-        .to.throw("Invalid email address: XX");
+      expect(function() { return new EmailAddress('XX'); })
+      .to.throw("Invalid email address: XX");
 
-      expect(function() { new EmailAddress('dominik.guzei@gmail..com'); })
-        .to.throw("Invalid email address: dominik.guzei@gmail..com");
+      expect(function() { return new EmailAddress('dominik.guzei@gmail..com'); })
+      .to.throw("Invalid email address: dominik.guzei@gmail..com");
 
-      expect(function() { new EmailAddress('dominik.guzeigmail.com'); })
-        .to.throw("Invalid email address: dominik.guzeigmail.com");
+      expect(function() { return new EmailAddress('dominik.guzeigmail.com'); })
+      .to.throw("Invalid email address: dominik.guzeigmail.com");
     });
 
   });
@@ -33,22 +33,22 @@ describe('EmailAddress', function() {
   describe('equality', function() {
 
     it('is equal when address is same', function() {
-      var first = new EmailAddress('test@bla.com');
-      var second = new EmailAddress('test@bla.com');
+      let first = new EmailAddress('test@bla.com');
+      let second = new EmailAddress('test@bla.com');
       expect(first.equals(second)).to.be.true;
       expect(second.equals(first)).to.be.true;
     });
 
     it('is not equal if address is different', function() {
-      var first = new EmailAddress('test@bla.com');
-      var second = new EmailAddress('test@blub.com');
+      let first = new EmailAddress('test@bla.com');
+      let second = new EmailAddress('test@blub.com');
       expect(first.equals(second)).to.be.false;
       expect(second.equals(first)).to.be.false;
     });
 
     it('is not equal if other is not an email address', function() {
-      var first = new EmailAddress('test@bla.com');
-      var second = 'test@blub.com';
+      let first = new EmailAddress('test@bla.com');
+      let second = 'test@blub.com';
       expect(first.equals(second)).to.be.false;
     });
 

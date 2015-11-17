@@ -1,9 +1,9 @@
 Password = Space.messaging.Serializable.extend('Password', {
 
-  Constructor: function (data) {
-    var value = (data && data.value) ? data.value : data;
+  Constructor(data) {
+    let value = (data && data.value) ? data.value : data;
 
-    if(!Password.isValid(value)) {
+    if (!Password.isValid(value)) {
       throw new Error(Password.ERRORS.cantBeEmpty);
     }
 
@@ -11,11 +11,11 @@ Password = Space.messaging.Serializable.extend('Password', {
     Object.freeze(this);
   },
 
-  toString: function() {
+  toString() {
     return this.value;
   },
 
-  equals: function(other) {
+  equals(other) {
     return (other instanceof Password) && other.value === this.value;
   }
 
@@ -31,6 +31,6 @@ Password.fields = {
   value: String
 };
 
-Password.isValid = function (value) {
+Password.isValid = function(value) {
   return _.isString(value) && value !== '';
 };
