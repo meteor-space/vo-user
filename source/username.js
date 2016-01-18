@@ -1,7 +1,8 @@
-Username = Space.messaging.Serializable.extend('Username', {
+Username = Space.domain.ValueObject.extend('Username', {
 
   Constructor(data) {
-    let value = (data && data.value) ? data.value : data;
+
+    const value = (data && data.value) ? data.value : data;
 
     if (!Username.isValid(value)) {
       throw new Error(Username.ERRORS.cantBeEmpty);
@@ -11,25 +12,24 @@ Username = Space.messaging.Serializable.extend('Username', {
     Object.freeze(this);
   },
 
-  toString() {
-    return this.value;
+  // EJSON serializable fields
+  fields() {
+    return {
+      value: String
+    };
   },
 
-  equals(other) {
-    return (other instanceof Username) && other.value === this.value;
+  toString() {
+    return this.value;
   }
 
 });
 
 Username.ERRORS = {
-  cantBeEmpty: "Usernames can't be empty"
+  cantBeEmpty: `Usernames can't be empty`
 };
 
 Username.type('Username');
-
-Username.fields = {
-  value: String
-};
 
 Username.isValid = function(value) {
   return _.isString(value) && value !== '';

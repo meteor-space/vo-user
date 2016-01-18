@@ -25,30 +25,6 @@ describe('Password', function() {
 
   });
 
-  describe('equality', function() {
-
-    it('is equal when username is same', function() {
-      let first = new Password('Bla');
-      let second = new Password('Bla');
-      expect(first.equals(second)).to.be.true;
-      expect(second.equals(first)).to.be.true;
-    });
-
-    it('is not equal if address is different', function() {
-      let first = new Password('first');
-      let second = new Password('second');
-      expect(first.equals(second)).to.be.false;
-      expect(second.equals(first)).to.be.false;
-    });
-
-    it('is not equal if other is not an email address', function() {
-      let first = new Password('first');
-      let second = 'second';
-      expect(first.equals(second)).to.be.false;
-    });
-
-  });
-
   describe('immutability', function() {
     it('freezes itself', function() {
       expect(Object.isFrozen(this.password)).to.be.true;

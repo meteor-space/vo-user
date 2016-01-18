@@ -1,32 +1,31 @@
-
-EmailAddress = Space.messaging.Serializable.extend('EmailAddress', {
+EmailAddress = Space.domain.ValueObject.extend('EmailAddress', {
 
   Constructor(data) {
-    let address = (data && data.address) ? data.address : data;
+
+    const address = (data && data.address) ? data.address : data;
 
     if (!EmailAddress.isValid(address)) {
-      throw new Error("Invalid email address: " + address);
+      throw new Error(`Invalid email address: ${address}`);
     }
 
     this.address = address;
     Object.freeze(this);
   },
 
-  toString() {
-    return this.address;
+  // EJSON serializable fields
+  fields() {
+    return {
+      address: String
+    };
   },
 
-  equals(other) {
-    return (other instanceof EmailAddress) && other.address === this.address;
+  toString() {
+    return '' + this.address;
   }
 
 });
 
 EmailAddress.type('EmailAddress');
-
-EmailAddress.fields = {
-  address: String
-};
 
 EmailAddress.isValid = function(value) {
   // taken from: https://github.com/jzaefferer/jquery-validation/blob/master/src/core.js
