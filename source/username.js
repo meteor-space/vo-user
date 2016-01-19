@@ -29,8 +29,6 @@ Username.ERRORS = {
   cantBeEmpty: `Usernames can't be empty`
 };
 
-Username.type('Username');
-
 Username.isValid = function(value) {
   return _.isString(value) && value !== '';
 };

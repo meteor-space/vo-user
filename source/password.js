@@ -25,8 +25,6 @@ Password = Space.domain.ValueObject.extend('Password', {
 
 });
 
-Password.type('Password');
-
 Password.ERRORS = {
   cantBeEmpty: `Passwords can't be empty'`
 };
