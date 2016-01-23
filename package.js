@@ -9,13 +9,13 @@ Package.describe({
 
 Package.onUse(function(api) {
 
-  api.versionsFrom('METEOR@1.0');
+  api.versionsFrom('1.2.0.1');
 
   api.use([
     'check',
     'underscore',
     'ecmascript',
-    'space:messaging@2.1.0'
+    'space:domain@0.1.0'
   ]);
 
   api.add_files([
@@ -37,8 +37,10 @@ Package.onTest(function(api) {
     'ejson',
     'ecmascript',
     'space:vo-user',
+    'space:domain@0.1.0',
     'practicalmeteor:munit@2.1.5',
-    'space:testing@1.5.0'
+    'space:testing@3.0.1',
+    'space:testing-messaging@3.0.0'
   ]);
 
   api.add_files([

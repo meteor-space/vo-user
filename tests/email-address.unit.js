@@ -30,30 +30,6 @@ describe('EmailAddress', function() {
 
   });
 
-  describe('equality', function() {
-
-    it('is equal when address is same', function() {
-      let first = new EmailAddress('test@bla.com');
-      let second = new EmailAddress('test@bla.com');
-      expect(first.equals(second)).to.be.true;
-      expect(second.equals(first)).to.be.true;
-    });
-
-    it('is not equal if address is different', function() {
-      let first = new EmailAddress('test@bla.com');
-      let second = new EmailAddress('test@blub.com');
-      expect(first.equals(second)).to.be.false;
-      expect(second.equals(first)).to.be.false;
-    });
-
-    it('is not equal if other is not an email address', function() {
-      let first = new EmailAddress('test@bla.com');
-      let second = 'test@blub.com';
-      expect(first.equals(second)).to.be.false;
-    });
-
-  });
-
   describe('immutability', function() {
     it('freezes itself', function() {
       expect(Object.isFrozen(this.emailAdress)).to.be.true;
