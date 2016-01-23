@@ -1,9 +1,10 @@
-Password = Space.messaging.Serializable.extend('Password', {
+Password = Space.domain.ValueObject.extend('Password', {
 
-  Constructor: function (data) {
-    var value = (data && data.value) ? data.value : data;
+  Constructor(data) {
 
-    if(!Password.isValid(value)) {
+    const value = (data && data.value) ? data.value : data;
+
+    if (!Password.isValid(value)) {
       throw new Error(Password.ERRORS.cantBeEmpty);
     }
 
@@ -11,26 +12,23 @@ Password = Space.messaging.Serializable.extend('Password', {
     Object.freeze(this);
   },
 
-  toString: function() {
+  toString() {
     return this.value;
   },
 
-  equals: function(other) {
-    return (other instanceof Password) && other.value === this.value;
+  // EJSON serializable fields
+  fields() {
+    return {
+      value: String
+    };
   }
 
 });
 
 Password.ERRORS = {
-  cantBeEmpty: "Passwords can't be empty"
+  cantBeEmpty: `Passwords can't be empty'`
 };
 
-Password.type('Password');
-
-Password.fields = {
-  value: String
-};
-
-Password.isValid = function (value) {
+Password.isValid = function(value) {
   return _.isString(value) && value !== '';
 };

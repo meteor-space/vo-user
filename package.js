@@ -9,18 +9,19 @@ Package.describe({
 
 Package.onUse(function(api) {
 
-  api.versionsFrom('METEOR@1.0');
+  api.versionsFrom('1.2.0.1');
 
   api.use([
     'check',
     'underscore',
-    'space:messaging@2.1.0'
+    'ecmascript',
+    'space:domain@0.1.0'
   ]);
 
   api.add_files([
     'source/email-address.js',
     'source/username.js',
-    'source/password.js',
+    'source/password.js'
   ]);
 
   api.export('EmailAddress');
@@ -34,15 +35,18 @@ Package.onTest(function(api) {
   api.use([
     'check',
     'ejson',
+    'ecmascript',
     'space:vo-user',
+    'space:domain@0.1.0',
     'practicalmeteor:munit@2.1.5',
-    'space:testing@1.5.0',
+    'space:testing@3.0.1',
+    'space:testing-messaging@3.0.0'
   ]);
 
   api.add_files([
     'tests/email-address.unit.js',
     'tests/username.unit.js',
-    'tests/password.unit.js',
+    'tests/password.unit.js'
   ]);
 
 });
